@@ -1,0 +1,36 @@
+﻿#grid {
+    font-family:"Trebuchet MS";
+    overflow:auto;
+    height:100%;
+}
+/*Column names*/ 
+.field-layerName {
+    width: 50px;
+}
+.field-contactName {
+    width: 50px;
+}
+.field-phone {
+    width: 50px;
+}
+.field-email {
+    width: 75px;
+}
+.field-agency {
+    width: 50px;
+}
+.field-description{
+    width:175px;
+}
+.dgrid-column {
+    width: 100px;
+}
+.dgrid-row {
+    cursor: pointer;
+}
+.dgrid-row-odd {
+    background-color: #acacac;
+}
+.dgrid {
+    height:inherit;
+}

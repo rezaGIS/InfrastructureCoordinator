@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<lists>
+  <indianReservationBoundary>
+    <title>Indian Reservation Boundary</title>
+    <agency>DOLA</agency>
+    <name>Chantal Unfug</name>
+    <phone>303-864-7720</phone>
+    <email>chantal.unfug@state.co.us</email>
+    <description>Description needed.</description>
+  </indianReservationBoundary>
+  <!--FEMA-->
+  <modelFlowPaths>
+    <title>Model FlowPaths</title>
+    <agency>FEMA</agency>
+    <name>Federal Emergency Management Agency</name>
+    <phone>1-877-336-2627</phone>
+    <email>mscservices@riskmapcds.com</email>
+    <description>A spatial data set consisting of lines showing the flow path used for floodplain modelling and mapping.</description>
+  </modelFlowPaths>
+  <baseFloodElev>
+    <title>Base Flood Elevation</title>
+    <agency>FEMA</agency>
+    <name>Federal Emergency Management Agency</name>
+    <phone>1-877-336-2627</phone>
+    <email>mscservices@riskmapcds.com</email>
+    <description>Location and attributes for base flood elevations lines shown on the FIRM</description>
+  </baseFloodElev>
+  <firmPanels>
+    <title>Firm Panels</title>
+    <agency>FEMA</agency>
+    <name>Federal Emergency Management Agency</name>
+    <phone>1-877-336-2627</phone>
+    <email>mscservices@riskmapcds.com</email>
+    <description>Official map of a community on which FEMA has delineated the Special Flood Hazard Areas (SFHAs), the Base Flood Elevations (BFEs) and the risk premium zones applicable to the community</description>
+  </firmPanels>
+  <LOMR>
+    <title>LOMR</title>
+    <agency>FEMA</agency>
+    <name>Federal Emergency Management Agency</name>
+    <phone>1-877-336-2627</phone>
+    <email>mscservices@riskmapcds.com</email>
+    <description>An official amendment to the currently effective FEMA map. It is issued by FEMA and changes flood zones, delineations and elevations</description>
+  </LOMR>
+  <yrZones100>
+    <title>100 Year Flood Zones</title>
+    <agency>FEMA</agency>
+    <name>Federal Emergency Management Agency</name>
+    <phone>1-877-336-2627</phone>
+    <email>mscservices@riskmapcds.com</email>
+    <description>All Zone comprising the 1% annual chance flood otherwise referred to as the “Base Flood” or “100 year flood”.  (Zones A, AE, AO, AH) without Floodway</description>
+  </yrZones100>
+ <yrZonesFloodway100>
+    <title>100 Year Floodway Zones</title>
+    <agency>FEMA</agency>
+    <name>Federal Emergency Management Agency</name>
+    <phone>1-877-336-2627</phone>
+    <email>mscservices@riskmapcds.com</email>
+    <description>All Zone AE with Floodway</description>
+  </yrZonesFloodway100>
+  <yrZones500>
+    <title>500 Year Flood Zones</title>
+    <agency>FEMA</agency>
+    <name>Federal Emergency Management Agency</name>
+    <phone>1-877-336-2627</phone>
+    <email>mscservices@riskmapcds.com</email>
+    <description>All Zone X, 0.2% annual chance flood otherwise referred to as “500 year flood”</description>
+  </yrZones500>
+  <zoneXFuture>
+    <title>Zone X Future Conditions</title>
+    <agency>FEMA</agency>
+    <name>Federal Emergency Management Agency</name>
+    <phone>1-877-336-2627</phone>
+    <email>mscservices@riskmapcds.com</email>
+    <description>Zone X Future Conditions of possible flood zones</description>
+  </zoneXFuture>
+   <zoneXLess1Foot>
+    <title>Zone X Area of Minimal Flood Hazard</title>
+    <agency>FEMA</agency>
+    <name>Federal Emergency Management Agency</name>
+    <phone>1-877-336-2627</phone>
+    <email>mscservices@riskmapcds.com</email>
+    <description>Areas determined to be outside the 1% and 0.2% annual chance floodplains</description>
+  </zoneXLess1Foot>
+  <zoneXLevee>
+    <title>Zone X Levee</title>
+    <agency>FEMA</agency>
+    <name>Federal Emergency Management Agency</name>
+    <phone>1-877-336-2627</phone>
+    <email>mscservices@riskmapcds.com</email>
+    <description>Zone X areas with reduced flood risk due to levee.</description>
+  </zoneXLevee>
+<!--CDOT-->
+  <CDOTRR>
+    <title>CDOT Railroads</title>
+    <agency>CDOT</agency>
+    <name>Johnny Olson</name>
+    <phone>970-350-2103  </phone>
+    <email>j.olson@state.co.us</email>
+    <description>Description needed.</description>
+  </CDOTRR>
+  <CDOTLocal>
+    <title>CDOT Local Roads</title>
+    <agency>CDOT</agency>
+    <name>Johnny Olson</name>
+    <phone>970-350-2103  </phone>
+    <email>j.olson@state.co.us</email>
+    <description>Description needed.</description>
+  </CDOTLocal>
+  <CDOTMajor>
+    <title>CDOT Major Roads</title>
+    <agency>CDOT</agency>
+    <name>Johnny Olson</name>
+    <phone>970-350-2103  </phone>
+    <email>j.olson@state.co.us</email>
+    <description>Description needed.</description>
+  </CDOTMajor>
+  <CDOTHwys>
+    <title>CDOT Highways</title>
+    <agency>CDOT</agency>
+    <name>Johnny Olson</name>
+    <phone>970-350-2103  </phone>
+    <email>j.olson@state.co.us</email>
+    <description>Description needed.</description>
+  </CDOTHwys>
+</lists>

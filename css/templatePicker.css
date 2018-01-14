@@ -1,0 +1,21 @@
+﻿
+        .templatePicker {
+            border: none;           
+        }
+        .templatePicker .grid .groupLabel{
+            
+        }
+        .dojoxGridRowTable {
+                table-layout: auto;                
+            }
+        
+        dojoxGridMasterView {
+            width:100px;
+        }
+        .dj_ie .infowindow .window .top .right .user .content {
+            position: relative;
+        }
+
+        .dj_ie .simpleInfoWindow .content {
+            position: relative;
+        }

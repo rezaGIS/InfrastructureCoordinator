@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Colorado Interagency Infrastructure Coordinator</title>
+    <!-- Bootstrap core CSS/JS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Bootstrap Datepicker -->
+    <script type="text/javascript" src="datepicker/moment.min.js"></script>
+    <script type="text/javascript" src="datepicker/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="datepicker/bootstrap-datetimepicker.min.css" />
+    <!-- ESRI Javascript API 3.18-->
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/dgrid/css/dgrid.css">
+    <!-- TOC widget -->
+    <link rel="stylesheet" type="text/css" href="../InfraCoord/agsjs/css/agsjs.css" />
+    <script type="text/javascript">
+        var dojoConfig = {
+            paths: {
+                //if you want to host on your own server, download and put in folders then use path like:
+                agsjs: location.pathname.replace(/\/[^/]+$/, '') + '/agsjs'
+            }
+        };
+    </script>
+    <script src="https://js.arcgis.com/3.18/"></script>
+    <!-- Custom styles for this template -->
+    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/sidebar.css" rel="stylesheet" />
+    <link href="css/dgrid.css" rel="stylesheet" />
+    <!-- Custom Javascript-->
+    <script type="text/javascript">
+        //Google analytics
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-35982920-15', 'auto');
+        ga('send', 'pageview'); 
+        //Tooltip
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+        // Off-canvas slider
+        $(document).ready(function () {
+            $('[data-toggle=offcanvas]').click(function () {
+                $('.row-offcanvas').toggleClass('active');
+                $('.off-bottom').toggleClass('active');
+            });
+        });
+        // start/end project date
+        $(function () {
+            $('#inputStart').datetimepicker({
+                format: "MM/DD/YYYY"
+            });
+            $('#inputEnd').datetimepicker({
+                format: "MM/DD/YYYY"
+            });
+        });  
+    </script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/searchData.js"></script>
+    <script type="text/javascript" src="js/newProject.js"></script>
+    <script type="text/javascript" src="js/identify.js"></script>
+</head>
+<body class="claro">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://coresiliency.squarespace.com/resources" target="_blank"><img id="cdleLogo" src="images/CRWGBanner.png" class="img-responsive" /></a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse pull-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://coresiliency.squarespace.com/resources" target="_blank">Resources</a></li>
+                    <li><a href="../crwg/html/aboutModal.html" data-toggle="modal" data-target="#aboutModal">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="requestLabel">
+        <div class="modal-dialog">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+	 <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="requestLabel">
+        <div class="modal-dialog">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- Left Pane -->
+        <div class="row-offcanvas row-offcanvas-left">
+            <div id="sidebar" class="sidebar-offcanvas">
+                <div class="well well-sm">
+                    <div class="tab-content">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" id="infoActivate" class="active"><a href="#infoTab" aria-controls="infoTab" role="tab" data-toggle="tab" name="infoActivate"><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="Home menu"></span></a></li>
+                            <li role="presentation" id="legendActivate" data-toggle="tooltip" data-placement="bottom" title="View legend"><a href="#legendTab" aria-controls="legendTab" role="tab" data-toggle="tab" name="legendActivate"><span class="glyphicon glyphicon-list-alt"></span></a></li>
+                            <li role="presentation" id="searchActivate" data-toggle="tooltip" data-placement="bottom" title="Search for data"><a href="#searchTab" aria-controls="searchTab" role="tab" data-toggle="tab" name="searchActivate"><span class="glyphicon glyphicon-search"></span></a></li>
+                            <li role="presentation" id="projectActivate" data-toggle="tooltip" data-placement="bottom" title="Add/Edit project"><a href="#projectTab" aria-controls="profile" role="tab" data-toggle="tab" name="projectActivate"><span class="glyphicon glyphicon-pencil"></span></a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <!-- Info Tab -->
+                            <div role="tabpanel" class="tab-pane active" id="infoTab">
+                                <div class="tabText-spacing">
+                                    <h4>Welcome to the Colorado Interagency Infrastructure Coordinator</h4>
+                                    <div class="tabText-spacing">Use the tabs above for map functionality</div>
+                                    <div class="tabText-spacing">
+                                        <p><span class="glyphicon glyphicon-list-alt"></span> View legend for data</p>
+                                        <p><span class="glyphicon glyphicon-search"></span> Search for data for a project</p>
+                                        <p><span class="glyphicon glyphicon-pencil"></span> Create or edit a reported project</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- Legend Tab -->
+                            <div role="tabpanel" class="tab-pane" id="legendTab">
+                                <div class="tabText-spacing">
+                                    <h4>Infrastructure Legend</h4>
+                                </div>
+                                <div id="tocDiv"></div>
+                            </div>
+                            <!-- Search Tab -->
+                            <div role="tabpanel" class="tab-pane" id="searchTab">
+                                <div id="info">
+                                    <div class="tabText-spacing">
+                                        <h4>CRWG Resource Finder</h4>
+                                        <div class="tabText-spacing">
+                                            Use the tool to draw and area you are interested in finding resources for an upcoming project.
+                                        </div>
+                                        <div class="tabText-spacing">
+                                            Data contacts will be populated on the grid below.
+                                        </div>
+                                    </div>
+                                    <div class="btn btn-primary glyphicon glyphicon-search" id="Polygon"> Search</div>
+                                </div>
+                            </div>
+                            <!-- Project Tab -->
+                            <div role="tabpanel" class="tab-pane" id="projectTab">
+                                <div id="info">
+                                    <div class="tabText-spacing">
+                                        <h4>Create a CRWG project.</h4>
+                                        <p>Use the 'Show' and 'Hide' buttons to adjust project visibility.</p>
+                                        <button type="button" class="btn btn-info" id="showProjects">Show</button>
+                                        <button type="button" class="btn btn-info" id="hideProjects">Hide</button>
+                                        <button type="button" class="btn btn-warning" id="helpProjects" href="../crwg/html/helpModal.html" data-toggle="modal" data-target="#helpModal">Help</button>
+                                    </div>
+                                    <h4>Fill out the form and save, then draw in your project.</h4>
+                                </div>
+                                <div class="form-horizontal" id="projectForm">
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-3 control-label">Project Name:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="inputName" placeholder="Name of project">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputOrg" class="col-sm-3 control-label">Project Org:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="inputOrg" placeholder="Project organization">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputProjType" class="col-sm-3 control-label">Project Type:</label>
+                                        <div class="col-sm-8">
+                                            <select type="text" class="form-control" id="inputProjType" placeholder="">
+                                                <option value="0" disabled selected>Select One:</option>
+                                                <option>Drinking Water</option>
+                                                <option>Transportation</option>
+                                                <option>Wastewater</option>
+                                                <option>Stormwater</option>
+                                                <option>Energy</option>
+                                                <option>Telecommunications</option>
+                                                <option>Information Technology</option>
+                                                <option>Public Facilities</option>
+                                                <option>Green Infrastructure</option>
+                                                <option>Floodplain Improvements</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPopAffected" class="col-sm-3 control-label">Population Affected:</label>
+                                        <div class="col-sm-8">
+                                            <select type="text" class="form-control" id="inputPopAffected" placeholder="">
+                                                <option disabled selected>Select One:</option>
+                                                <option>0- 10 affected population</option>
+                                                <option>10- 100 affected population</option>
+                                                <option>100- 300 affected population</option>
+                                                <option>300- 1000 affected population</option>
+                                                <option>1000- 10000 affected population</option>
+                                                <option>10000- 50000 affected population</option>
+                                                <option>50000- 100000 affected population</option>
+                                                <option>100000+ affected population</option>
+                                                <option>Unknown</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="criteriaSelect" class="col-sm-3 control-label">Criteria Manuals:</label>
+                                        <div class="col-sm-8">
+                                            <select type="text" class="form-control" id="criteriaSelect">
+                                                <option disabled selected>Select One:</option>
+                                                <option value="AASHTO">AASHTO Roadside Design Guide</option>
+                                                <option value="RAMCAP">AWWA Risk and Resilience Management of Water and Wastewater Systems (RAMCAP)</option>
+                                                <option value="CDOT DDM">CDOT Drainage Design Manual</option>
+                                                <option value="CDOT MSS">CDOT M&S Standards</option>
+                                                <option value="CDOT SSRBD">CDOT Standard Specifications for Road and Bridge Construction</option>
+                                                <option value="CHPHE DWTW">CHPHE Design Criteria for Domestic Wastewater Treatment Works</option>
+                                                <option value="CDPHE PWS">CDPHE Design Criteria for Potable Water Systems</option>
+                                                <option value="CWCB FSCM">CWCB Floodplain Stormwater and Criteria Manual</option>
+                                                <option value="FHWA FIRBD">FHWA Framework for Improving Resilience of Bridge Design</option>
+                                                <option value="FHWA Highways">FHWA Highways in the River Environment- Floodplains, Extreme Events, Risk and Resilience</option>
+                                                <option value="FHWA CRBFHP">FHWA Standard Specs for Construction of Roads and Bridges on Federal Highway Projects</option>
+                                                <option value="UDFCD USD" >UDFCD Urban Storm Drainage Criteria Manuals</option>
+                                                <option value="Rules and Regs DSDC">Rules and Regulations for Dam Safety and Dam Construction</option>
+                                                <option value="Other">Other Manuals Used</option>
+                                            </select>
+                                            <label for="inputCriteria" class="control-label">Selected manuals:</label>
+                                            <textarea class="form-control" rows="3" id="inputCriteria" style="resize: none;" disabled></textarea>
+                                            <button class="btn btn-danger col-sm-4" id="clearTextArea">Clear</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputFunding" class="col-sm-3 control-label">Funding Sources:</label>
+                                        <div class="col-sm-8">
+                                            <select type="text" class="form-control" id="inputFunding" placeholder="">
+                                                <option disabled selected>Select One:</option>
+                                                <option>Federal Funding</option>
+                                                <option>State Funding</option>
+                                                <option>Local Funding</option>
+                                                <option>Special District Funding</option>
+                                                <option>Private Funding</option>
+                                                <option>Other Funding Source</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputStart" class="col-sm-3 control-label">Project Start:</label>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class='col-sm-7'>
+                                                    <input type='text' class="form-control" id='inputStart' placeholder="Select a start date" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEnd" class="col-sm-3 control-label">Project End:</label>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class='col-sm-7'>
+                                                    <input type='text' class="form-control" id='inputEnd' placeholder="Select a end date" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputOutreach" class="col-sm-3 control-label">Outreach:</label>
+                                        <div class="col-sm-8">
+                                            <select type="text" class="form-control" id="inputOutreach" placeholder="">
+                                                <option disabled selected>Select One:</option>
+                                                <option>Public has not been notified.</option>
+                                                <option>Public has been notified.</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputCreateBy" class="col-sm-3 control-label">Created by:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="inputCreateBy" placeholder="Enter your name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="col-sm-3 control-label">Email</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="inputEmail" placeholder="Enter your email">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-success" id="saveForm">Save</button>
+                                </div>
+                                <div class="tabText-spacing">
+                                    <button type="button" class="btn btn-danger" id="cancelForm">Cancel</button>
+                                    <button type="button" class="btn btn-info disabled" id="projectDraw">Draw</button>
+                                    <button type="button" class="btn btn-info disabled" id="projectSubmit">Submit Project</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Map Pane -->
+            <div id="main">
+                <p class="visible-xs">
+                    <button type="button" id="sideBarBtn" class="btn btn-primary" data-toggle="offcanvas"><i class="glyphicon glyphicon-wrench"></i></button>
+                </p>
+                <div id="mapDiv"></div>
+            </div>
+            <!-- Bottom / Dgrid Pane -->
+            <div id="bottomPanel" class="off-bottom"><div id="grid"></div></div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+</body>
+</html>
