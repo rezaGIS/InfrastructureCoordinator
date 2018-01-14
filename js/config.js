@@ -34,7 +34,7 @@ var url_highways = "https://gis.colorado.gov/public/rest/services/CRWG/CRWG_Data
 var url_crwgData = "https://gis.colorado.gov/public/rest/services/CRWG/CRWG_Data/MapServer";
 var url_crwg_projects = "https://gis.colorado.gov/public/rest/services/CRWG/CRWG_Projects/FeatureServer/0"; //sde FeatureService
 /*-- Community Inclusion Change Mapservices URLS --*/
-var url_socioDemographic = "http://www.cohealthmaps.dphe.state.co.us/arcgis/rest/services/COMMUNITY_INCLUSION/COLORADO_COMMUNITY_INCLUSION_SOCIODEMOGRAPHIC_DISABILITY/MapServer"
+var url_socioDemographic = "https://www.cohealthmaps.dphe.state.co.us/arcgis/rest/services/COMMUNITY_INCLUSION/COLORADO_COMMUNITY_INCLUSION_SOCIODEMOGRAPHIC_DISABILITY/MapServer"
 /*-- Layer Variables --*/
 var crwg_projects; // Feature layer Variables
 var crwgData; // Dyanmic layer variables
