@@ -163,61 +163,61 @@ require([
     }
 
     // I DONT LIKE HOW THIS IS SET UP, FEELS CLUNKY
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        var tabHandler = $(e.target).attr("name") // activated tab
-        DEBUG && console.log(tabHandler);
-        if (tabHandler == 'infoActivate') {
-            DEBUG && console.log("Identify task is enabled");
-            //DEBUG && console.log(identifyMapEvent);
-            IDENTIFYTOOL = true;
-            if (PROJECTTOOL) {
-                PROJECTTOOL = false;
-                map.removeLayer(crwg_projects)
-            }
-            if (SEARCHTOOL) {
-                SEARCHTOOL = false;
-            }
-            //initIdentify();
-            toc.refresh();
-        }
-        if (tabHandler == 'legendActivate') {
-            DEBUG && console.log("legend activated");
-           // DEBUG && console.log(identifyMapEvent);
-            IDENTIFYTOOL = true;
-            if (SEARCHTOOL) {
-                SEARCHTOOL = false;
-            }
-            if (PROJECTTOOL) {
-                PROJECTTOOL = false;
-                map.removeLayer(crwg_projects)               
-            }
-            //initIdentify();
-        }
-        if (tabHandler == 'searchActivate') {
-            DEBUG && console.log("Search for data activated");
-            //DEBUG && console.log(identifyMapEvent);
-            SEARCHTOOL = true;
-            if (PROJECTTOOL) {
-                PROJECTTOOL = false;
-                map.removeLayer(crwg_projects)
-            }
-            if (IDENTIFYTOOL) {
-                DEBUG && console.log("IDENTIFYTOOL IF STATEMENT HIT");
-                IDENTIFYTOOL = false;
-                //identifyMapEvent.remove();
-                //clearMapservices();
-            }
-        }
-        if (tabHandler == 'projectActivate') {
-            DEBUG && console.log("Project creation activated");
-            //DEBUG && console.log(identifyMapEvent);
-            // map.infoWindow.hide();
-            //identifyMapEvent.remove();
-            IDENTIFYTOOL = false;
-            PROJECTTOOL = true;
-            //clearMapservices();  
-        }
-    });
+    //$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    //    var tabHandler = $(e.target).attr("name") // activated tab
+    //    DEBUG && console.log(tabHandler);
+    //    if (tabHandler == 'infoActivate') {
+    //        DEBUG && console.log("Identify task is enabled");
+    //        //DEBUG && console.log(identifyMapEvent);
+    //        IDENTIFYTOOL = true;
+    //        if (PROJECTTOOL) {
+    //            PROJECTTOOL = false;
+    //            map.removeLayer(crwg_projects)
+    //        }
+    //        if (SEARCHTOOL) {
+    //            SEARCHTOOL = false;
+    //        }
+    //        //initIdentify();
+    //        toc.refresh();
+    //    }
+    //    if (tabHandler == 'legendActivate') {
+    //        DEBUG && console.log("legend activated");
+    //       // DEBUG && console.log(identifyMapEvent);
+    //        IDENTIFYTOOL = true;
+    //        if (SEARCHTOOL) {
+    //            SEARCHTOOL = false;
+    //        }
+    //        if (PROJECTTOOL) {
+    //            PROJECTTOOL = false;
+    //            map.removeLayer(crwg_projects)               
+    //        }
+    //        //initIdentify();
+    //    }
+    //    if (tabHandler == 'searchActivate') {
+    //        DEBUG && console.log("Search for data activated");
+    //        //DEBUG && console.log(identifyMapEvent);
+    //        SEARCHTOOL = true;
+    //        if (PROJECTTOOL) {
+    //            PROJECTTOOL = false;
+    //            map.removeLayer(crwg_projects)
+    //        }
+    //        if (IDENTIFYTOOL) {
+    //            DEBUG && console.log("IDENTIFYTOOL IF STATEMENT HIT");
+    //            IDENTIFYTOOL = false;
+    //            //identifyMapEvent.remove();
+    //            //clearMapservices();
+    //        }
+    //    }
+    //    if (tabHandler == 'projectActivate') {
+    //        DEBUG && console.log("Project creation activated");
+    //        //DEBUG && console.log(identifyMapEvent);
+    //        // map.infoWindow.hide();
+    //        //identifyMapEvent.remove();
+    //        IDENTIFYTOOL = false;
+    //        PROJECTTOOL = true;
+    //        //clearMapservices();  
+    //    }
+    //});
     function clearMapservices() {
         crwgData.setVisibleLayers([]);
         age17under.setVisibleLayers([]);
