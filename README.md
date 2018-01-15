@@ -14,5 +14,5 @@ One of the painpoints for the group was having to collect and update shapefiles 
 The solution to this was to have the application rely on already existing Map Services created by the agencies and for the application to query whether they existed and provide
 contact information for the user to follow up on if they needed more concrete data.
 
-<a href="https://rezagis.github.io/InfrastructureCoordinator/">View demo of this application</a>
+<a href="https://rezagis.github.io/InfrastructureCoordinator/" target="_blank">View demo of this application</a>
 
