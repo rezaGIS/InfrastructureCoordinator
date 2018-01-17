@@ -5,26 +5,31 @@
 }
 /*Column names*/ 
 .field-layerName {
-    width: 50px;
+    width:125px;
 }
 .field-contactName {
-    width: 50px;
+    width:125px;
+
 }
 .field-phone {
-    width: 50px;
+    width:125px;
+
 }
 .field-email {
-    width: 75px;
+    width:125px;
+
 }
 .field-agency {
-    width: 50px;
+    width:125px;
+
 }
 .field-description{
-    width:175px;
+    width:250px;
 }
-.dgrid-column {
+/*.dgrid-column {
     width: 100px;
-}
+    position:absolute;
+}*/
 .dgrid-row {
     cursor: pointer;
 }
