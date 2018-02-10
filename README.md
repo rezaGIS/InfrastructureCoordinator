@@ -5,8 +5,7 @@ Application to query infrastracture layers from various State Agencies and to fi
 <li>HTML/CSS3</li>
 <li>Javascript</li>
 <li>jQuery</li>
-<li>Bootstrap</li>
-<li>Custom Dojo</li>
+<li>Custom Bootstrap / Dojo</li>
 
 </br>
 Created by Kassrah Rezagholi
